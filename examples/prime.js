@@ -19,15 +19,25 @@ function isPrime(n) {
 function main() {
   for (n = 2; n < 100; n = n + 1) {
     if (isPrime(n)) {
-      log(n);
+      log(concat(n, " is prime"));
     }
   }
 }
 
-// Utility function
+// Utility functions
 function log(value) {
   if (typeof value == 'int') {
     value = primitive.int2str(value);
   }
   primitive.say(value);
+}
+
+function concat(a, b) {
+  if (typeof a == 'int') {
+    a = primitive.int2str(a);
+  }
+  if (typeof b == 'int') {
+    b = primitive.int2str(b);
+  }
+  return primitive.concat(a, b);
 }
