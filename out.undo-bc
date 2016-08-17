@@ -1,10 +1,10 @@
-$label main
-push int 0
-local store i
+$label mod
+local store a
+local store b
 $label 0
-push int 5
-local load i
-cmp <
+local load b
+local load a
+cmp >=
 jump carry $2
 push int 0
 jump always $3
@@ -14,15 +14,121 @@ $label 3
 push int 0
 cmp =
 jump carry $1
-push str iteration
-call primitive say
+local load b
+local load a
+math -
+local store a
+jump always $0
+$label 1
+local load a
+ret val
+ret
+$label isPrime
+local store n
+push int 2
+local store i
+$label 4
+local load n
+local load i
+cmp <
+jump carry $6
+push int 0
+jump always $7
+$label 6
+push int 1
+$label 7
+push int 0
+cmp =
+jump carry $5
+push int 0
+local load i
+push arg
+local load n
+push arg
+call mod
+cmp =
+jump carry $8
+push int 0
+jump always $9
+$label 8
+push int 1
+$label 9
+push int 0
+cmp =
+jump carry $10
+push int 0
+ret val
+jump always $11
+$label 10
+$label 11
 push int 1
 local load i
 math +
 local store i
-jump always $0
-$label 1
-push str done
+jump always $4
+$label 5
+push int 1
+ret val
+ret
+$label main
+push int 2
+local store n
+$label 12
+push int 100
+local load n
+cmp <
+jump carry $14
+push int 0
+jump always $15
+$label 14
+push int 1
+$label 15
+push int 0
+cmp =
+jump carry $13
+local load n
+push arg
+call isPrime
+push int 0
+cmp =
+jump carry $16
+local load n
+push arg
+call log
+jump always $17
+$label 16
+$label 17
+push int 1
+local load n
+math +
+local store n
+jump always $12
+$label 13
+ret
+$label log
+local store value
+push str int
+local load value
+call primitive typeof
+cmp =
+jump carry $18
+push int 0
+jump always $19
+$label 18
+push int 1
+$label 19
+push int 0
+cmp =
+jump carry $20
+local load value
+push str str
+push str int
+call primitive convert
+local store value
+jump always $21
+$label 20
+$label 21
+local load value
 call primitive say
 ret
 
