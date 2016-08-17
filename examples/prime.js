@@ -27,8 +27,7 @@ function main() {
 // Utility function
 function log(value) {
   if (typeof value == 'int') {
-    value = primitive.convert('int', 'str', value);
+    value = primitive.int2str(value);
   }
   primitive.say(value);
 }
-
