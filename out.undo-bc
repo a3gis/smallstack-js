@@ -1,0 +1,123 @@
+$label factorial
+local store factorial_n
+push int 1
+local load factorial_n
+cmp =
+jump carry $0
+push int 0
+jump always $1
+$label 0
+push int 1
+$label 1
+push int 0
+cmp =
+jump carry $2
+push int 1
+ret val
+jump always $3
+$label 2
+$label 3
+push int 1
+local load factorial_n
+math -
+push arg
+call factorial
+local load factorial_n
+math *
+ret val
+ret
+$label fibonacci
+local store fibonacci_a
+local store fibonacci_b
+local store fibonacci_n
+push int 0
+local load fibonacci_n
+cmp =
+jump carry $4
+push int 0
+jump always $5
+$label 4
+push int 1
+$label 5
+push int 0
+cmp =
+jump carry $6
+local load fibonacci_a
+ret val
+jump always $7
+$label 6
+$label 7
+push int 1
+local load fibonacci_n
+math -
+push arg
+local load fibonacci_b
+local load fibonacci_a
+math +
+push arg
+local load fibonacci_b
+push arg
+call fibonacci
+ret val
+ret
+$label add
+local store add_x
+local store add_y
+local load add_y
+local load add_x
+math +
+ret val
+ret
+$label main
+push int 5
+push arg
+call factorial
+push arg
+call log
+push int 7
+push arg
+push int 1
+push arg
+push int 0
+push arg
+call fibonacci
+push arg
+call log
+push int 2
+push int 8
+push int 0
+math -
+math +
+push arg
+call log
+push str hello, world!! :)
+push arg
+call log
+ret
+$label log
+local store log_value
+push str int
+local load log_value
+call primitive typeof
+cmp =
+jump carry $8
+push int 0
+jump always $9
+$label 8
+push int 1
+$label 9
+push int 0
+cmp =
+jump carry $10
+local load log_value
+push str str
+push str int
+call primitive convert
+local store log_value
+jump always $11
+$label 10
+$label 11
+local load log_value
+call primitive say
+ret
+
