@@ -1,3 +1,3 @@
 module.exports = function (node, context) {
-  context.emit("local load " + context.local(node.name));
+  context.emit("local load " + node.name);
 }

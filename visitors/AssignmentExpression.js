@@ -6,7 +6,7 @@ module.exports = function (node, context) {
     }
 
     context.compile(node.right);
-    context.emit("local store " + context.local(node.left.name));
+    context.emit("local store " + node.left.name);
     break;
   default:
     context.error(node, "could not compile assignement");

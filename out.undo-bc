@@ -1,7 +1,7 @@
 $label factorial
-local store factorial_n
+local store n
 push int 1
-local load factorial_n
+local load n
 cmp =
 jump carry $0
 push int 0
@@ -18,20 +18,20 @@ jump always $3
 $label 2
 $label 3
 push int 1
-local load factorial_n
+local load n
 math -
 push arg
 call factorial
-local load factorial_n
+local load n
 math *
 ret val
 ret
 $label fibonacci
-local store fibonacci_a
-local store fibonacci_b
-local store fibonacci_n
+local store a
+local store b
+local store n
 push int 0
-local load fibonacci_n
+local load n
 cmp =
 jump carry $4
 push int 0
@@ -42,29 +42,29 @@ $label 5
 push int 0
 cmp =
 jump carry $6
-local load fibonacci_a
+local load a
 ret val
 jump always $7
 $label 6
 $label 7
 push int 1
-local load fibonacci_n
+local load n
 math -
 push arg
-local load fibonacci_b
-local load fibonacci_a
+local load b
+local load a
 math +
 push arg
-local load fibonacci_b
+local load b
 push arg
 call fibonacci
 ret val
 ret
 $label add
-local store add_x
-local store add_y
-local load add_y
-local load add_x
+local store x
+local store y
+local load y
+local load x
 math +
 ret val
 ret
@@ -95,9 +95,9 @@ push arg
 call log
 ret
 $label log
-local store log_value
+local store value
 push str int
-local load log_value
+local load value
 call primitive typeof
 cmp =
 jump carry $8
@@ -109,15 +109,15 @@ $label 9
 push int 0
 cmp =
 jump carry $10
-local load log_value
+local load value
 push str str
 push str int
 call primitive convert
-local store log_value
+local store value
 jump always $11
 $label 10
 $label 11
-local load log_value
+local load value
 call primitive say
 ret
 

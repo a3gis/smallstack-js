@@ -17,12 +17,6 @@ function processSource(source) {
 function Context() {
   this.assembly = "";
   this.labelCounter = 0;
-  this.callCounter = 0;
-  this.localPrefixes = [];
-}
-
-Context.prototype.local = function (name) {
-  return (this.localPrefixes[0] || '') + name;
 }
 
 Context.prototype.emit = function (instr) {
