@@ -27,17 +27,17 @@ function main() {
 // Utility functions
 function log(value) {
   if (typeof value == 'int') {
-    value = primitive.int2str(value);
+    value = vm_int2str(value);
   }
-  primitive.say(value);
+  vm_say(value);
 }
 
 function concat(a, b) {
   if (typeof a == 'int') {
-    a = primitive.int2str(a);
+    a = vm_int2str(a);
   }
   if (typeof b == 'int') {
-    b = primitive.int2str(b);
+    b = vm_int2str(b);
   }
-  return primitive.concat(a, b);
+  return vm_concat(a, b);
 }

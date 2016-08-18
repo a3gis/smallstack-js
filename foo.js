@@ -25,7 +25,7 @@ function main() {
 
 function log(value) {
   if (typeof value == 'int') {
-    value = primitive.int2str(value);
+    value = vm_int2str(value);
   }
-  primitive.say(value);
+  vm_say(value);
 }
